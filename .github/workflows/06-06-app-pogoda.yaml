@@ -36,7 +36,7 @@ jobs:
           sleep 10
 
       - name: Test /weather endpoint using curl
-        run:
+        run: | 
           set -e
           echo "Testing /weather endpoint..."
           curl -f "http://localhost:8000/weather?city=Warsaw&api_key=${{ secrets.OPENWEATHER_API_KEY }}"
@@ -45,13 +45,13 @@ jobs:
 
       - name: Show container logs on failure (debug
         if: failure()
-        run:
+        run: | 
           echo "Container logs:"
           docker logs pogoda_api || true
 
       - name: Stop and remove the container (always)
         if: always()
-        run:  
+        run: |
           docker stop pogoda_api || true
           docker rm pogoda_api || true
 
@@ -64,8 +64,7 @@ jobs:
 
       - name: Tag image for Docker Hub
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run:
-
+        run: |
           SHORT_SHA="${GITHUB_SHA::7}"
           HUB_IMAGE_BASE="${{ secrets.DOCKERHUB_USERNAME }}/python_pogoda"
 
@@ -80,7 +79,7 @@ jobs:
       
       - name: Push image to Docker Hub
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run:
+        run: |
           SHORT_SHA="${GITHUB_SHA::7}"
           HUB_IMAGE_BASE="${{ secrets.DOCKERHUB_USERNAME }}/python_pogoda"
 
