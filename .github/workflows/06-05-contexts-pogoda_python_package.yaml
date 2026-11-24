@@ -11,7 +11,7 @@ on:
       release_tag:
         default: "v0.1.0"
         description: "Tag / wersja releasu (np. v1.0.0)"
-        type: boolean
+        type: string
 
 permissions:
   contents: write
@@ -24,8 +24,9 @@ jobs:
     name: Pobierz informacje o pogodzie + build binarki
     runs-on: ubuntu-latest
     defaults:
-      shell: bash
-      working-directory: ./CWICZENIA/06-context/pogoda_python
+      runs:
+        shell: bash
+        working-directory: ./CWICZENIA/06-context/pogoda_python
 
     steps: 
       - name: Checkout
