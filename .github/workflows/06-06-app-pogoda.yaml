@@ -65,11 +65,12 @@ jobs:
       - name: Tag image for Docker Hub
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run:
-          echo "$LOCAL_IMAGE_NAME, $HUB_IMAGE_BASE"
 
           SHORT_SHA="${GITHUB_SHA::7}"
           HUB_IMAGE_BASE="${{ secrets.DOCKERHUB_USERNAME }}/python_pogoda"
 
+          echo "$LOCAL_IMAGE_NAME, $HUB_IMAGE_BASE"
+          
           echo "Tagging image:"
           echo " - $HUB_IMAGE_BASE:JakubRaczkiewicz"
           echo " - $HUB_IMAGE_BASE:$SHORT_SHA"
