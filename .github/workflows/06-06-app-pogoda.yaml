@@ -10,18 +10,6 @@ on:
       feature/06-pogoda-ap
     
   workflow_dispatch:
-    inputs:
-      city: 
-        default: "Warsaw"
-        description: "City to get weather info for"
-        type: string
-      release_tag:
-        default: "v0.1.0"
-        description: "Tag / wersja releasu (np. v1.0.0)"
-        type: string
-
-permissions:
-  contents: write
 
 env:
   MY_KLUCZYK: ${{ vars.MY_KLUCZYK }}
