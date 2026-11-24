@@ -6,8 +6,11 @@ jobs:
     steps:
       - name: Show OS
         uses: actions/checkout@v6
-      - name: Printing Folders
-        run: ls -al
+      - name: Checkout Code
+        uses: actions/setup-node@v24
+      - name: Install Dependencies
+        working-directory: CWICZENIA/04-praca-z-zewnetrzymi-akcjami/react-app
+        run: npm ci
   
           
       
