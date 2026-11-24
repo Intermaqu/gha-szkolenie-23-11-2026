@@ -72,7 +72,7 @@ jobs:
           echo " - $HUB_IMAGE_BASE:JakubRaczkiewicz"
           echo " - $HUB_IMAGE_BASE:$SHORT_SHA"
 
-          docker tag "$LOCAL_IMAGE_NAME" "$HUB_IMAGE_BASE:latest"
+          docker tag "$LOCAL_IMAGE_NAME" "$HUB_IMAGE_BASE:JakubRaczkiewicz"
           docker tag "$LOCAL_IMAGE_NAME" "$HUB_IMAGE_BASE:$SHORT_SHA"
       
       - name: Push image to Docker Hub
