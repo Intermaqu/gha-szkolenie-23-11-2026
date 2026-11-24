@@ -9,6 +9,8 @@ on:
   # pull_request:
   #   types: [opened, synchronize]
   #   branches: [main]
+env:
+  MY_KLUCZYK: ${{ vars.MY_KLUCZYK }}
 
 jobs:
   echo-data:
@@ -20,4 +22,5 @@ jobs:
       - name: Pobierz informacje o pogodzie
         working-directory: ./CWICZENIA/06-context/pogoda
         run: |
+          chmod +x ./start.sh
           ./start.sh ${{ inputs.city }} ${{ env.MY_KLUCZYK }} >> $GITHUB_STEP_SUMMARY
