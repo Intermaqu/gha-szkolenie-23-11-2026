@@ -1,5 +1,11 @@
 name: 06 – Contexts
-on: [workflow_dispatch, push]
+on: 
+  workflow_dispatch:
+    inputs:
+      city: 
+        required: true
+        type: string
+
   # pull_request:
   #   types: [opened, synchronize]
   #   branches: [main]
@@ -8,14 +14,10 @@ jobs:
   echo-data:
     runs-on: ubuntu-latest
     steps: 
-      - name: Display Information
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Pobierz informacje o pogodzie
+        working-directory: ./CWICZENIA/06-context/pogoda
         run: |
-          "echo Event name: ${{ github.event_name}}"
-          "echo Ref: ${{ github.ref}}"
-          "echo SHA: ${{ github.sha}}"
-          "echo Actor: ${{ github.actor_name}}"
-          "echo Workflow: ${{ github.workflow_name}}"
-          "echo Run Id: ${{ github.run_id}}"
-          "echo Run number: ${{ github.run_number}}"
-      - name: Retrieve Variable
-        run: "echo $MY_VAR"
+          ./start.sh ${{ inputs.city }} ${{ env.MY_KLUCZYK }} >> $GITHUB_STEP_SUMMARY
