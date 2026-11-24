@@ -24,7 +24,7 @@ jobs:
     name: Pobierz informacje o pogodzie + build binarki
     runs-on: ubuntu-latest
     defaults:
-      runs:
+      run:
         shell: bash
         working-directory: ./CWICZENIA/06-context/pogoda_python
 
