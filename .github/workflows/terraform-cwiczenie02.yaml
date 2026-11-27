@@ -44,7 +44,7 @@ defaults:
     shell: bash
 
 env:
-  TF_SOURCE_DIR: ./CWICZENIA_TERRAFORM/cwiczenie02/terraform
+  TF_SOURCE_DIR: ./cw2_terraform
   TERRAFORM_VERSION: '1.17.2'
   TF_IN_AUTOMATION: 'true'
   TF_INPUT: 'false'
@@ -112,7 +112,7 @@ jobs:
           state_root="$(realpath -m -- "$state_root")"
           workspace="$(realpath -e -- "$GITHUB_WORKSPACE")"
           runner_temporary="$(realpath -m -- "$RUNNER_TEMP")"
-          state_directory="$(realpath -m -- "${state_root}/cwiczenie02/${GITHUB_REPOSITORY_ID}")"
+          state_directory="$(realpath -m -- "${state_root}/cw2_terraform/${GITHUB_REPOSITORY_ID}")"
           case "$state_directory/" in
             "$workspace/"*|"$runner_temporary/"*)
               echo "::error::Stan musi znajdować się poza checkoutem i katalogiem tymczasowym joba."
